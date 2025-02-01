@@ -9,9 +9,13 @@ Solution Overview:
 Quizzo is a web-based quiz hosting platform that allows users to create, manage, and participate in interactive quizzes. It offers a user-friendly interface, real-time scoring, and multiple question formats, enhancing engagement for both hosts and participants.
 
 Tech Stack Used
+
 Frontend & Backend: JavaScript
+
 Styling: CSS
+
 Markup & Structure: HTML
+
 Hosting & Deployment: GitHub Pages / Netlify / Firebase
 
 
