@@ -24,19 +24,4 @@ LEKSHMY B
 
 Let me know if you need any refinements! 🚀
 
-
-
-
-
-
-
-
-
-
-
-
-Search
-
-Reason
-
-ChatGPT can mak
+demo video: https://drive.google.com/drive/folders/1Cx3UG3dl6aMV-V6YiV7aDoHfmNWZaCGu
