@@ -1,3 +1,4 @@
+/*
 .welcometab{
     text-align: center;
     margin-top: 250px;
@@ -28,4 +29,192 @@ button{
 }
 body{
     font-family: Arial, Helvetica, sans-serif;
+}
+
+.difficulty{
+    text-align: center;
+    margin-top: 50px;
+    margin-left: 150px;
+    margin-right: 150px;
+    margin-bottom: 20px;
+    background-color: rgb(195, 223, 217);
+    padding: 20px;
+    border-radius: 10px;
+    height: px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+.difficulty button{
+    margin: 20px;
+    height: 50px;
+    width: 250px;
+    border: 1px solid rgb(195, 223, 217);
+    background-color:#B1B8D4;
+    
+}
+*/
+
+/* Reset default browser styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #f0e6f6, #e2d1f9); /* Soft pastel gradient */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
+
+/* Styling for the main container (difficulty section) */
+.difficulty {
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+    border-radius: 20px;
+    padding: 50px 40px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    width: 320px;
+    max-width: 90%;
+    backdrop-filter: blur(10px); /* Soft blur effect behind the container */
+    animation: fadeIn 1s ease-out; /* Smooth fade-in effect */
+}
+
+/* Title styling */
+.difficulty h2 {
+    font-size: 28px;
+    color: #3a3a3a;
+    margin-bottom: 30px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+/* Button styling */
+button {
+    background: linear-gradient(145deg, #6a5acd, #4b0082); /* Purple gradient */
+    color: #ffffff;
+    border: none;
+    padding: 15px 30px;
+    font-size: 18px;
+    margin: 15px 0;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Hover effect for buttons */
+button:hover {
+    transform: translateY(-5px); /* Button lifts when hovered */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* Deeper shadow on hover */
+}
+
+/* Focus effect for accessibility */
+button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px #5b9bd5;
+}
+
+/* Animation for fade-in effect */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Reset default browser styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #a0c4ff, #e2aaff); /* Soft gradient for the background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
+
+/* Styling for the instructions container */
+.instructions {
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent background */
+    border-radius: 20px;
+    padding: 40px 30px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    width: 350px;
+    max-width: 90%;
+    text-align: center;
+    backdrop-filter: blur(8px); /* Soft blur effect behind */
+    animation: fadeIn 1s ease-out; /* Smooth fade-in effect */
+}
+
+/* Styling for the paragraph with instructions */
+.instructions p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #3a3a3a;
+    margin-bottom: 30px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+/* Emoji styling for the timer colors */
+.instructions p span {
+    font-size: 20px;
+}
+
+/* Styling for the start button */
+button {
+    background: linear-gradient(145deg, #ff61a6, #d22b7e); /* Pink gradient */
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 18px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+/* Hover effect for the start button */
+button:hover {
+    transform: translateY(-5px); /* Button lifts on hover */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* Deep shadow on hover */
+}
+
+/* Focus effect for accessibility */
+button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px #5b9bd5;
+}
+
+/* Animation for fade-in effect */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
