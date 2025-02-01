@@ -15,8 +15,8 @@ Hosting & Deployment: GitHub Pages / Netlify / Firebase
 
 
 Team Members 
-MEENAKSHI PJ
-MRIDULA J B
+MEENAKSHI PJ,
+MRIDULA J B,
 LEKSHMY B
 
 
