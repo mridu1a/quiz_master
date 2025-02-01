@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="styles.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Select Topic</title>
+</head>
+<body>
+  <div class="topics">
+    <h2>Select Your Topics</h2>
+    <form>
+      <button type="button" onclick="saveCategory('popquiz')">Pop Quiz</button>
+      <br>
+      <button type="button" onclick="saveCategory('music')">Music</button>
+      <br>
+      <button type="button" onclick="saveCategory('general_knowledge')">General Knowledge</button>
+      <br>
+      <button type="button" onclick="saveCategory('sports')">Sports</button>
+      <br>
+    </form>
+  </div>
+
+  <script>
+    function saveCategory(category) {
+        //event.preventDefault(); // Prevent default action
+        localStorage.setItem("selectedCategory", category);
+        //console.log("Category Saved:", category); // Debugging log
+        window.location.href = "difficulty.html"; // Redirect to difficulty selection
+    }
+    function getCategory() {
+        return (localStorage.getItem("selectedCategory") || "popquiz").trim().toLowerCase();
+    }
+  </script>
+</body>
+</html>
