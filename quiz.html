@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+</head>
+<body>
+    <h1 id="quiz-title"></h1>
+    <p>Time Left: <span id="timer">--</span> seconds</p>
+    <div id="quiz-container"></div>
+    <button id="next-question">Next Question</button>
+
+    <script>
+        // Function to get category from localStorage and normalize it
+        function getCategory() {
+            return (localStorage.getItem("selectedCategory") || "pop quiz").trim().toLowerCase();
+        }
+
+        // Function to get difficulty from localStorage
+        function getDifficulty() {
+            return (localStorage.getItem("selectedDifficulty") || "easy").trim().toLowerCase();
+        }
+
+        const category = getCategory();
+        const difficulty = getDifficulty();
+
+        document.getElementById("quiz-title").innerText = `Quiz: ${category} (${difficulty})`;
+
+        // Quiz Data
+        const quizData = {
+            "pop quiz": {
+                easy: [
+                    { question: "What is 2 + 2?", options: ["3", "4", "5", "6"], answer: "4" },
+                    { question: "Which color is a banana?", options: ["Red", "Green", "Yellow", "Blue"], answer: "Yellow" }
+                ],
+                medium: [
+                    { question: "Who painted the Mona Lisa?", options: ["Van Gogh", "Da Vinci", "Picasso", "Rembrandt"], answer: "Da Vinci" },
+                    { question: "Which planet is known as the Red Planet?", options: ["Earth", "Venus", "Mars", "Jupiter"], answer: "Mars" }
+                ],
+                hard: [
+                    { question: "What is the capital of Canada?", options: ["Toronto", "Vancouver", "Ottawa", "Montreal"], answer: "Ottawa" },
+                    { question: "What is the square root of 144?", options: ["10", "12", "14", "16"], answer: "12" }
+                ]
+            },
+            "sports": {
+                easy: [
+                    { question: "How many players are there in a soccer team?", options: ["9", "10", "11", "12"], answer: "11" },
+                    { question: "Which sport uses a bat and ball?", options: ["Soccer", "Tennis", "Cricket", "Hockey"], answer: "Cricket" }
+                ],
+                medium: [
+                    { question: "Who has won the most FIFA World Cups?", options: ["Brazil", "Germany", "Argentina", "France"], answer: "Brazil" },
+                    { question: "Which country hosts the Wimbledon tournament?", options: ["USA", "UK", "Australia", "France"], answer: "UK" }
+                ],
+                hard: [
+                    { question: "How many rings are there in the Olympic logo?", options: ["4", "5", "6", "7"], answer: "5" },
+                    { question: "What year did the first modern Olympics take place?", options: ["1896", "1904", "1920", "1936"], answer: "1896" }
+                ]
+            }
+        };
+
+        // Timer settings based on difficulty
+        const timeLimits = { hard: 5, medium: 10, easy: 20 };
+        const questionTime = timeLimits[difficulty] || 20;
+
+        let currentQuestionIndex = 0;
+        let questions = quizData[category]?.[difficulty] || [];
+        let timerInterval;
+        let score = 0;
+
+        // Show question
+        function showQuestion(index) {
+            clearInterval(timerInterval);
+            document.getElementById("next-question").style.display = "none";
+            document.getElementById("quiz-container").innerHTML = "";
+
+            if (index >= questions.length) {
+                document.getElementById("quiz-container").innerHTML = `<p>Quiz Finished! Your score: ${score}/${questions.length}</p>`;
+                return;
+            }
+
+            const question = questions[index];
+
+            const questionElement = document.createElement("div");
+            questionElement.innerHTML = `
+                <p><strong>Q${index + 1}:</strong> ${question.question}</p>
+                <ul>
+                    ${question.options.map(option => `
+                        <li><button class="answer-btn" onclick="checkAnswer(this, '${option}', '${question.answer}')">${option}</button></li>
+                    `).join('')}
+                </ul>
+                <hr>
+            `;
+            document.getElementById("quiz-container").appendChild(questionElement);
+
+            startTimer(questionTime);
+        }
+
+        function startTimer(seconds) {
+            let timeLeft = seconds;
+            document.getElementById("timer").innerText = timeLeft;
+
+            timerInterval = setInterval(() => {
+                timeLeft--;
+                document.getElementById("timer").innerText = timeLeft;
+
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    alert("Time's up! Moving to the next question.");
+                    nextQuestion();
+                }
+            }, 1000);
+        }
+
+        function checkAnswer(button, selected, correct) {
+            clearInterval(timerInterval);
+            document.querySelectorAll(".answer-btn").forEach(btn => btn.disabled = true);
+
+            if (selected === correct) {
+                alert("Correct!");
+                score++;
+            } else {
+                alert("Wrong! The correct answer was: " + correct);
+            }
+
+            document.getElementById("next-question").style.display = "block";
+        }
+
+        function nextQuestion() {
+            currentQuestionIndex++;
+            showQuestion(currentQuestionIndex);
+        }
+
+        document.getElementById("next-question").addEventListener("click", nextQuestion);
+
+        // Start quiz
+        showQuestion(currentQuestionIndex);
+    </script>
+</body>
+</html>

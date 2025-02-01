@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html lang="en">
 <head>
     <link rel="stylesheet" href="styles.css">
@@ -11,6 +11,7 @@
 
     <div class="quiz-container">
         <div class="timer">Time Left: <span id="time">30</span> seconds</div>
+<<<<<<< HEAD
         
         <div class="question-container">
             <form id="quizForm">
@@ -52,20 +53,57 @@
         </div>
         
         <p id="result"></p>
+=======
+        <form id="quizForm">
+            <div class="question">
+                <p>1. What is the capital of France?</p>
+                <label><input type="radio" name="q1" value="berlin"> Berlin</label>
+                <label><input type="radio" name="q1" value="madrid"> Madrid</label>
+                <label><input type="radio" name="q1" value="paris"> Paris</label>
+                <label><input type="radio" name="q1" value="rome"> Rome</label>
+            </div>
+            <div class="question">
+                <p>2. Which planet is known as the Red Planet?</p>
+                <label><input type="radio" name="q2" value="earth"> Earth</label>
+                <label><input type="radio" name="q2" value="mars"> Mars</label>
+                <label><input type="radio" name="q2" value="venus"> Venus</label>
+                <label><input type="radio" name="q2" value="jupiter"> Jupiter</label>
+            </div>
+            <div class="question">
+                <p>3. Who painted the Mona Lisa?</p>
+                <label><input type="radio" name="q3" value="vincent"> Vincent van Gogh</label>
+                <label><input type="radio" name="q3" value="leonardo"> Leonardo da Vinci</label>
+                <label><input type="radio" name="q3" value="pablo"> Pablo Picasso</label>
+                <label><input type="radio" name="q3" value="claude"> Claude Monet</label>
+            </div>
+            <div class="question">
+                <p>4. What is the largest planet in our solar system?</p>
+                <label><input type="radio" name="q4" value="venus"> Venus</label>
+                <label><input type="radio" name="q4" value="jupiter"> Jupiter</label>
+                <label><input type="radio" name="q4" value="saturn"> Saturn</label>
+                <label><input type="radio" name="q4" value="neptune"> Neptune</label>
+            </div>
+            <div class="question">
+                <p>5. What is the smallest planet in our solar system?</p>
+                <label><input type="radio" name="q5" value="mercury"> Mercury</label>
+                <label><input type="radio" name="q5" value="pluto"> Pluto</label>
+                <label><input type="radio" name="q5" value="uranus"> Uranus</label>
+                <label><input type="radio" name="q5" value="neptune"> Neptune</label>
+            </div>
+            <button type="button" onclick="submitQuiz()">Submit</button>
+        </form>
+>>>>>>> 19d4c646b1d40f625134c74ee6839bbb184e8515
     </div>
 
     <script>
-        // Function to get the selected difficulty from localStorage
         function getDifficulty() {
             return (localStorage.getItem("selectedDifficulty") || "easy").trim().toLowerCase();
         }
 
-        // Function to get the selected category from localStorage
         function getCategory() {
             return (localStorage.getItem("selectedCategory") || "general knowledge").trim().toLowerCase();
         }
 
-        // Set the quiz title dynamically
         const category = getCategory();
         const difficulty = getDifficulty();
         document.getElementById("quiz-title").innerText = `Quiz: ${category} (${difficulty})`;
@@ -84,6 +122,7 @@
         function submitQuiz() {
             clearInterval(timer);
             const answers = {
+<<<<<<< HEAD
                 q1: ["red", "blue", "yellow"],
                 q2: ["4"]
             };
@@ -98,8 +137,28 @@
                 }
             }
             document.getElementById("result").textContent = `You scored ${score} out of ${Object.keys(answers).length}`;
+=======
+                q1: "paris",
+                q2: "mars",
+                q3: "leonardo",
+                q4: "jupiter",
+                q5: "mercury"
+            };
+
+            let score = 0;
+            const form = document.getElementById("quizForm");
+            for (let key in answers) {
+                const selected = form.elements[key].value;
+                if (selected === answers[key]) {
+                    score++;
+                }
+            }
+
+            localStorage.setItem("quizScore", score);
+            localStorage.setItem("totalQuestions", Object.keys(answers).length);
+            window.location.href = "result.html";
+>>>>>>> 19d4c646b1d40f625134c74ee6839bbb184e8515
         }
     </script>
-
 </body>
 </html>
