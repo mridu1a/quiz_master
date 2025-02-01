@@ -11,43 +11,46 @@
 
     <div class="quiz-container">
         <div class="timer">Time Left: <span id="time">30</span> seconds</div>
-        <form id="quizForm">
-            <div class="question">
-                <p>1. What is the capital of France?</p>
-                <label><input type="radio" name="q1" value="red"> berlin</label>
-                <label><input type="radio" name="q1" value="green"> madrid</label>
-                <label><input type="radio" name="q1" value="blue"> paris</label>
-                <label><input type="radio" name="q1" value="yellow"> rome</label>
-            </div>
-            <div class="question">
-                <p>2. Which planet is known as the Red Planet?</p>
-                <label><input type="radio" name="q2" value="3"> earth</label>
-                <label><input type="radio" name="q2" value="4"> mars</label>
-                <label><input type="radio" name="q2" value="5"> venus</label>
-                <label><input type="radio" name="q2" value="6"> jupiter</label>
-            </div>
-            <div class="question">
-                <p>3. Who painted the Mona Lisa?</p>
-                <label><input type="radio" name="q3" value="1"> Vincent van Gogh</label>
-                <label><input type="radio" name="q3" value="2"> Leonardo da Vinci</label>
-                <label><input type="radio" name="q3" value="3"> Pablo Picasso</label>
-                <label><input type="radio" name="q3" value="4"> Claude Monet</label>
-            </div>
-            <div class="question"><p>4. What is the largest planet in our solar system?</p>
-                <label><input type="radio" name="q4" value="1"> Venus</label>
-                <label><input type="radio" name="q4" value="2"> Jupiter</label>
-                <label><input type="radio" name="q4" value="3"> Saturn</label>
-                <label><input type="radio" name="q4" value="4"> Neptune</label>
-            </div>
-            <div class="question"><p>5. What is the smallest planet in our solar system?</p>
-                <label><input type="radio" name="q5" value="1"> Mercury</label>
-                <label><input type="radio" name="q5" value="2"> Pluto</label>
-                <label><input type="radio" name="q5" value="3"> Uranus</label>
-                <label><input type="radio" name="q5" value="4"> Neptune</label>
-                
-            </div>
-            <button type="button" onclick="submitQuiz()">Submit</button>
-        </form>
+        
+        <div class="question-container">
+            <form id="quizForm">
+                <div class="question">
+                    <p>1. What is the capital of France?</p>
+                    <label><input type="radio" name="q1" value="red"> berlin</label>
+                    <label><input type="radio" name="q1" value="green"> madrid</label>
+                    <label><input type="radio" name="q1" value="blue"> paris</label>
+                    <label><input type="radio" name="q1" value="yellow"> rome</label>
+                </div>
+                <div class="question">
+                    <p>2. Which planet is known as the Red Planet?</p>
+                    <label><input type="radio" name="q2" value="3"> earth</label>
+                    <label><input type="radio" name="q2" value="4"> mars</label>
+                    <label><input type="radio" name="q2" value="5"> venus</label>
+                    <label><input type="radio" name="q2" value="6"> jupiter</label>
+                </div>
+                <div class="question">
+                    <p>3. Who painted the Mona Lisa?</p>
+                    <label><input type="radio" name="q3" value="1"> Vincent van Gogh</label>
+                    <label><input type="radio" name="q3" value="2"> Leonardo da Vinci</label>
+                    <label><input type="radio" name="q3" value="3"> Pablo Picasso</label>
+                    <label><input type="radio" name="q3" value="4"> Claude Monet</label>
+                </div>
+                <div class="question"><p>4. What is the largest planet in our solar system?</p>
+                    <label><input type="radio" name="q4" value="1"> Venus</label>
+                    <label><input type="radio" name="q4" value="2"> Jupiter</label>
+                    <label><input type="radio" name="q4" value="3"> Saturn</label>
+                    <label><input type="radio" name="q4" value="4"> Neptune</label>
+                </div>
+                <div class="question"><p>5. What is the smallest planet in our solar system?</p>
+                    <label><input type="radio" name="q5" value="1"> Mercury</label>
+                    <label><input type="radio" name="q5" value="2"> Pluto</label>
+                    <label><input type="radio" name="q5" value="3"> Uranus</label>
+                    <label><input type="radio" name="q5" value="4"> Neptune</label>
+                </div>
+                <button type="button" onclick="submitQuiz()">Submit</button>
+            </form>
+        </div>
+        
         <p id="result"></p>
     </div>
 
@@ -68,35 +71,34 @@
         document.getElementById("quiz-title").innerText = `Quiz: ${category} (${difficulty})`;
 
         let timeLeft = 30;
-const timerElement = document.getElementById("time");
-const timer = setInterval(() => {
-    timeLeft--;
-    timerElement.textContent = timeLeft;
-    if (timeLeft <= 0) {
-        clearInterval(timer);
-        submitQuiz();
-    }
-}, 1000);
+        const timerElement = document.getElementById("time");
+        const timer = setInterval(() => {
+            timeLeft--;
+            timerElement.textContent = timeLeft;
+            if (timeLeft <= 0) {
+                clearInterval(timer);
+                submitQuiz();
+            }
+        }, 1000);
 
-function submitQuiz() {
-    clearInterval(timer);
-    const answers = {
-        q1: ["red", "blue", "yellow"],
-        q2: ["4"]
-    };
-    let score = 0;
-    const form = document.getElementById("quizForm");
-    for (let key in answers) {
-        const selected = Array.from(form.elements[key])
-        .filter(i => i.checked)
-        .map(i => i.value);
-        if (JSON.stringify(selected.sort()) === JSON.stringify(answers[key].sort())) {
-            score++;
+        function submitQuiz() {
+            clearInterval(timer);
+            const answers = {
+                q1: ["red", "blue", "yellow"],
+                q2: ["4"]
+            };
+            let score = 0;
+            const form = document.getElementById("quizForm");
+            for (let key in answers) {
+                const selected = Array.from(form.elements[key])
+                .filter(i => i.checked)
+                .map(i => i.value);
+                if (JSON.stringify(selected.sort()) === JSON.stringify(answers[key].sort())) {
+                    score++;
+                }
+            }
+            document.getElementById("result").textContent = `You scored ${score} out of ${Object.keys(answers).length}`;
         }
-    }
-    document.getElementById("result").textContent = `You scored ${score} out of ${Object.keys(answers).length}`;
-}
-    
     </script>
 
 </body>
