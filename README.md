@@ -1,8 +1,10 @@
 # quiz_master
-Problem Statement
+Problem Statement:
+
 Many quiz platforms lack flexibility, interactivity, and an easy setup for quiz hosting. Educators, event organizers, and quiz enthusiasts need a simple, accessible solution to create and host engaging quizzes with real-time participation.
 
-Solution Overview
+Solution Overview:
+
 
 Quizzo is a web-based quiz hosting platform that allows users to create, manage, and participate in interactive quizzes. It offers a user-friendly interface, real-time scoring, and multiple question formats, enhancing engagement for both hosts and participants.
 
