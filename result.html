@@ -5,29 +5,94 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz Result</title>
+    <style>
+        /* General Styles */
+        body {
+            background: linear-gradient(to bottom, #FAD0C4, #FFD1FF); /* Pastel violet-pink gradient */
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        /* Card-style container */
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 90%;
+        }
+
+        /* Quiz result text */
+        h1 {
+            color: #813772; /* Deep violet */
+        }
+
+        p {
+            font-size: 18px;
+            color: #5A2D60;
+        }
+
+        /* GIF Styling */
+        #gif-container img {
+            width: 250px;
+            max-width: 80%;
+            height: auto;
+            margin-top: 15px;
+        }
+
+        /* Button Styling */
+        button {
+            background: #A267AC;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s ease;
+            margin-top: 15px;
+        }
+
+        button:hover {
+            background: #8C5FA4;
+        }
+    </style>
 </head>
 <body>
-    <h1>Quiz Result</h1>
-    <p id="result"></p>
-    <div id="gif-container"></div> <!-- Container for the GIF -->
-    <button onclick="window.location.href='quuuiz.html'">Try Again</button>
+    <div class="container">
+        <h1>Quiz Result</h1>
+        <p id="result"></p>
+        <div id="gif-container"></div> <!-- Container for the GIF -->
+        <button onclick="window.location.href='quiz.html'">Try Again</button>
+    </div>
 
     <script>
-        const score = localStorage.getItem("quizScore") || 0;
-        const total = localStorage.getItem("totalQuestions") || 5;
+        const score = parseInt(localStorage.getItem("quizScore"), 10) || 0;
+        const total = parseInt(localStorage.getItem("totalQuestions"), 10) || 5;
+        const percentage = (score / total) * 100;
 
         // Display the result
         document.getElementById("result").textContent = `You scored ${score} out of ${total}`;
 
-        // Display GIFs based on the score
+        // Display GIFs based on the percentage score
         const gifContainer = document.getElementById("gif-container");
-        if (score > 3) {
-            gifContainer.innerHTML = `<img src="images/cheers.gif" alt="Celebration GIF" style="width: 300px; height: auto;">`;
-        } else if (score < 3) {
-            gifContainer.innerHTML = `<img src="images/sad.gif" alt="Sad GIF" style="width: 300px; height: auto;">`;
+        let gifPath = "";
+
+        if (percentage >= 80) {
+            gifPath = "images/cheers.gif"; // Excellent score
+        } else if (percentage >= 50) {
+            gifPath = "images/neutral.gif"; // Average score
         } else {
-            gifContainer.innerHTML = `<img src="images/neutral.gif" alt="Neutral GIF" style="width: 300px; height: auto;">`;
+            gifPath = "images/sad.gif"; // Low score
         }
+
+        gifContainer.innerHTML = `<img src="${gifPath}" alt="Result GIF">`;
     </script>
 </body>
 </html>
