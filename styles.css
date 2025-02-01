@@ -1,0 +1,32 @@
+.welcometab{
+    text-align: center;
+    margin-top: 250px;
+    margin-left: 150px;
+    margin-right: 150px;
+    background-color: rgb(195, 223, 217);
+    padding: 20px;
+    border-radius: 10px;
+    height: 200px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    
+}
+#name{
+    border-radius: 10px;
+    height: 30px;
+    width: 200px;
+    border: 1px solid rgb(195, 223, 217);
+    padding: 10px;
+}
+
+button{
+    border-radius: 10px;
+    height: 50px;
+    width: 100px;
+    border: 1px solid rgb(195, 223, 217);
+    padding: 10px;
+    background-color: rgb(237, 241, 240);
+}
+
+body{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
